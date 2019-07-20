@@ -179,3 +179,33 @@ missing_count<- function(data)
   rownames(new)=names(data)
   return(new)
 }
+             
+multicollinearity<-function(data,target)
+{
+  library("dplyr")
+  gen<-names(data)
+  nums<-names(select_if(data, is.numeric))
+  nums_<-nums[!nums %in% as.character(target)]
+  gen_<-gen[!gen %in% as.character(target) ]
+  temp<-c()
+  rsq<-c()
+  var<-c()
+  count<-1
+  print(nums_)
+  
+  for (i in nums_)
+    
+  {
+    temp<-gen_[!gen_ %in% i]
+    a<-lm(cbind(data[,i],data[,temp]))
+    var[count]<-i
+    rsq[count]<-summary(a)$r.squared 
+    count<-count+1
+  }
+  
+  var<-data.frame("variable"=var)
+  rsq<-data.frame("R2_Value"=rsq)
+  vbind<-cbind(var,rsq)
+  vbind<- vbind[order(-vbind$R2_Value),]
+  print(vbind)
+}
