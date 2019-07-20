@@ -1,1 +1,1 @@
-exportPattern("graphplot_full", "categorical_count", "plotscatter_all", "outlier_count", "missing_count")
+exportPattern("graphplot_every", "categorical_count", "plotscatter_all", "outlier_count", "missing_count")
