@@ -1,4 +1,4 @@
-graphplot_every<- function(data,filepath='')
+getgraphplot_every<- function(data,filepath='')
   
 {
   library("dplyr")
