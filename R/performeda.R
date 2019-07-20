@@ -8,6 +8,7 @@ graphplot_full<- function(data,filepath='')
 
   print(nums)
   print(labels)
+  dir.create(filepath)
 
   for(var in nums)
   {
