@@ -1,5 +1,5 @@
 
-graphplot_full<- function(data,filepath='')
+graphplot_every<- function(data,filepath='')
 
 {
   library("dplyr")
