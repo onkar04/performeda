@@ -39,11 +39,11 @@ getgraphplot_every<- function(data,filepath='')
     barplot(counts, main = paste('Barplot of', unlist(names(data[var]))), col = viridis(length(slices)))
     pie(slices, labels = lbls, main =paste('PieChart of', unlist(names(data[var]))), col = viridis(length(slices)))
     
-    # dev.off()
-    # 
-    # a = list.files(pattern = '.png')
-    # file.copy(a, filepath)
-    # 
+    dev.off()
+   
+    a = list.files(pattern = '.png')
+    file.copy(a, filepath)
+    
     
   }
 }
