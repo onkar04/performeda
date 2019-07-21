@@ -19,10 +19,10 @@ getgraphplot_every<- function(data,filepath='')
             horizontal = T)
     hist(data[,var], main = paste('Histogram of', unlist(names(data[var]))),
          xlab = names(data)[var], ylab = 'No. of Houses', col = 'grey', border=F)
-    # dev.off()
-    # a = list.files(pattern = '.png')
-    # file.copy(a, filepath)
-    # 
+    dev.off()
+    a = list.files(pattern = '.png')
+    file.copy(a, filepath)
+  
   }
   
   for(var in labels)
