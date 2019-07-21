@@ -3,9 +3,10 @@ getgraphplot_every<- function(data,filepath='')
 {
   library("dplyr")
   library("viridis")
+  
   nums<-names(select_if(data, is.numeric))
   labels<-names(select_if(data, is.factor))
-  
+
   print(nums)
   print(labels)
   dir.create(filepath)
@@ -13,52 +14,38 @@ getgraphplot_every<- function(data,filepath='')
   for(var in nums)
   {
     png(paste(unlist(names(data[var])),'.png', sep=""))
-    par(mfrow=c(1,1))
+    par(mfrow=c(1,2))
     boxplot(data[,var], main = paste('Boxplot of', unlist(names(data[var]))),
             ylab = names(data)[var], col = 'yellowgreen', border = 'black',
             horizontal = T)
-    
-     dev.off()
-    a = list.files(pattern = '.png')
-    file.copy(a, filepath)
-    
-    png(paste(unlist(names(data[var])),'.png', sep=""))
-
     hist(data[,var], main = paste('Histogram of', unlist(names(data[var]))),
-         xlab = names(data)[var], ylab = 'No. of Houses', col = 'grey', border=F)
+         xlab = names(data)[var], ylab = 'No. of Obs', col = 'grey', border=F)
     dev.off()
     a = list.files(pattern = '.png')
     file.copy(a, filepath)
-  
+
   }
-  
+
   for(var in labels)
   {
     png(paste(unlist(names(data[var])),'.png', sep=""))
-    
+
     counts <- table(data[var])
-    
+
     slices <- c(counts)
     lbls <- c(counts)
-    
-    par(mfrow=c(1,1))
-    
-    barplot(counts, main = paste('Barplot of', unlist(names(data[var]))), col = viridis(length(slices)))
-    
-    dev.off()
-    a = list.files(pattern = '.png')
-    file.copy(a, filepath)
-  
-    png(paste(unlist(names(data[var])),'.png', sep=""))
 
+    par(mfrow=c(1,2))
+
+    barplot(counts, main = paste('Barplot of', unlist(names(data[var]))), col = viridis(length(slices)))
     pie(slices, labels = lbls, main =paste('PieChart of', unlist(names(data[var]))), col = viridis(length(slices)))
-    
+
     dev.off()
-   
+
     a = list.files(pattern = '.png')
     file.copy(a, filepath)
-    
-    
+
+
   }
 }
 
