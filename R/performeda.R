@@ -17,6 +17,11 @@ getgraphplot_every<- function(data,filepath='')
     boxplot(data[,var], main = paste('Boxplot of', unlist(names(data[var]))),
             ylab = names(data)[var], col = 'yellowgreen', border = 'black',
             horizontal = T)
+    
+     dev.off()
+    a = list.files(pattern = '.png')
+    file.copy(a, filepath)
+  
     hist(data[,var], main = paste('Histogram of', unlist(names(data[var]))),
          xlab = names(data)[var], ylab = 'No. of Houses', col = 'grey', border=F)
     dev.off()
@@ -37,6 +42,11 @@ getgraphplot_every<- function(data,filepath='')
     par(mfrow=c(1,1))
     
     barplot(counts, main = paste('Barplot of', unlist(names(data[var]))), col = viridis(length(slices)))
+    
+    dev.off()
+    a = list.files(pattern = '.png')
+    file.copy(a, filepath)
+  
     pie(slices, labels = lbls, main =paste('PieChart of', unlist(names(data[var]))), col = viridis(length(slices)))
     
     dev.off()
