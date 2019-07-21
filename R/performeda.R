@@ -21,7 +21,9 @@ getgraphplot_every<- function(data,filepath='')
      dev.off()
     a = list.files(pattern = '.png')
     file.copy(a, filepath)
-  
+    
+    png(paste(unlist(names(data[var])),'.png', sep=""))
+
     hist(data[,var], main = paste('Histogram of', unlist(names(data[var]))),
          xlab = names(data)[var], ylab = 'No. of Houses', col = 'grey', border=F)
     dev.off()
@@ -47,6 +49,8 @@ getgraphplot_every<- function(data,filepath='')
     a = list.files(pattern = '.png')
     file.copy(a, filepath)
   
+    png(paste(unlist(names(data[var])),'.png', sep=""))
+
     pie(slices, labels = lbls, main =paste('PieChart of', unlist(names(data[var]))), col = viridis(length(slices)))
     
     dev.off()
