@@ -12,7 +12,7 @@ getgraphplot_every<- function(data,filepath='')
   
   for(var in nums)
   {
-    # png(paste(unlist(names(data[var])),'.png', sep=""))
+    png(paste(unlist(names(data[var])),'.png', sep=""))
     par(mfrow=c(1,1))
     boxplot(data[,var], main = paste('Boxplot of', unlist(names(data[var]))),
             ylab = names(data)[var], col = 'yellowgreen', border = 'black',
@@ -27,7 +27,7 @@ getgraphplot_every<- function(data,filepath='')
   
   for(var in labels)
   {
-    # png(paste(unlist(names(data[var])),'.png', sep=""))
+    png(paste(unlist(names(data[var])),'.png', sep=""))
     
     counts <- table(data[var])
     
